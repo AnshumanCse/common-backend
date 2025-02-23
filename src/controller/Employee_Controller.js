@@ -42,24 +42,7 @@ const createEmployee = async (req, res) => {
  * @return {Object} : List of employees with pagination information.
  */
 
-// const getAllEmployees = async (req, res) => {
-//     try {
-//         const options = {
-//             page: req.query.page || 1,
-//             limit: req.query.limit || 10,
-//             sort: { createdAt: -1 },  // Sort by createdAt in descending order
-//         };
 
-//         const employees = await Employee.find();
-
-//         return res.status(200).json({
-//             status: "success",
-//             data: employees,
-//         });
-//     } catch (error) {
-//         return res.status(500).json({ status: "error", message: error.message });
-//     }
-// };
 const getAllEmployees = async (req, res) => {
     try {
         // Extract page and limit from query parameters, set default values if not provided

@@ -1,3 +1,6 @@
+
+
+
 /**
  * index.js
  * @description :: index route file of admin platform.
@@ -11,6 +14,8 @@ router.get("/", (req, res) => {
     data: "Server is running",
   });
 });
+
+// router.use(require("./adminRoutes"));
 
 
 module.exports = router;
