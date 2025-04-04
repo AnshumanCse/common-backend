@@ -1,5 +1,5 @@
 const { verifyUserToken } = require('../services/authServices')
-const User = require('../model/User')
+const User = require('../model/UserModel')
 const mongoose = require("mongoose")
 
 const checkUserAuthenticate = async (req,res,next) => {
@@ -43,3 +43,4 @@ const checkUserAuthenticate = async (req,res,next) => {
 module.exports = {
     checkUserAuthenticate
 }
+

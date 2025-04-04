@@ -7,13 +7,12 @@ const express = require("express");
 const router = express.Router();
 const rateLimit = require("express-rate-limit");
 const { healthcheck } = require("../controller/healthCkeck");
-const { createEmployee, getAllEmployees, updateEmployee, deleteEmployee } = require("../controller/Employee_Controller");
 const { checkAuthenticate } = require("../middleware/adminAuthenticate");
 // const HeaderKey = require("../middleware/headerKey");
 const adminRoutes = require("./device/v1/adminRoutes");
-const dutyRoutes = require("./device/v1/dutyRoutes")
-const crewRoutes = require("./device/v1/crewRoutes")
-const vehicleRoutes = require("./device/v1/vehicleRoutes")
+
+const userRoutes = require("./device/v1/userRoutes")
+const blogsRoutes = require("./device/v1/blogRoutes")
 
 const authRateLimiter = rateLimit({
   windowMs: 10 * 60 * 1000,
@@ -50,16 +49,11 @@ router.route('/healthcheck').get(healthcheck)
 
 // ======================== ||  Routes || ====================================
 router.use(adminRoutes);
-router.use(dutyRoutes);
-router.use(crewRoutes);
-router.use(vehicleRoutes);
 
-// ====================== || Employee Routes || ==========================
-router.route('/employee/add').post(checkAuthenticate, createEmployee)
-router.route('/employees').get(getAllEmployees)
-router.route('/employees/:id').put(checkAuthenticate, updateEmployee)
-router.route('/employees/:id').delete(checkAuthenticate, deleteEmployee)
+router.use(userRoutes);
+router.use(blogsRoutes);
 
+// ====================== || Routes || ==========================
 
 
 module.exports = router;
